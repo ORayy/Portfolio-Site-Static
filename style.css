@@ -1,0 +1,33 @@
+/* setting default styles, margin and padding for all the elements */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* html customizing */
+html {
+    font-size: 62.5%;
+}
+
+/* header tag customizing */
+#particles-js {
+    height: 100vh;
+    width: 100%;
+    background-image: url(images/index/header-background.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: #000;
+}
+
+/* section */
+.test {
+    background-color: red;
+    height: 100vh;
+    width: 100%;
+}
+
