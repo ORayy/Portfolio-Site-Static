@@ -9,9 +9,11 @@
 }
 
 /* html customizing */
-html {
+:root {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    --clr-neon: hsl(327 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
 }
 
 /* header tag customizing */
@@ -52,49 +54,86 @@ html {
     right: 19%;
 }
 
-/* customizing about-me section */
-.about-me {
-    background-color: rgb(160, 157, 157);
+/* Creating neon button */
+.neon-button {
+    font-size: 2rem;
+    font-family: "Baloo Da 2", cursive;
+
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+
+    position: absolute;
+    text-align: center;
+    margin-right: 30%;
+    margin-bottom: 3rem;
+    margin-top: 35rem;
+    right: 14.580%;
+    top: 25%;
+
+    /* glowing effect on text */
+    text-shadow: 
+    0 0 0.205em hsl(0 0% 100% / 0.5),
+    0 0 0.35em var(--clr-neon);
+
+    /* glowing effect on outer box/border */
+    box-shadow: inset 0 0 0.5em 0 var(--clr-neon),
+    0 0 0.5em 0 var(--clr-neon);
+}
+
+/* glow reflextion on the ground */
+.neon-button::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    background: var(--clr-neon);
+    top: 120%;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    scroll-snap-align: start;
+    height: 100%;
+
+    /* adding the glow on outside reflextion/shadow */
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
 }
 
-/* customizing portfolio section */
-.portfolio {
-    background-color: rgb(250, 116, 116);
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    scroll-snap-align: start;
+/* extra glow effect on button - will show after hover because opacity is 0 */
+.neon-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
 }
 
-/* customizing portfolio section */
-.contact {
-    background-color: rgb(116, 223, 250);
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    scroll-snap-align: start;
+/* hover */
+.neon-button:hover,
+.neon-button:focus {
+    color: var(--clr-bg);
+    text-shadow: none;
+    background-color: var(--clr-neon);
+    box-shadow: 0 0 2em 0.5em var(--clr-neon)
 }
 
-
-
-/* general for styling for all section tags */
-.section about-me {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: whitesmoke;
-    scroll-snap-align: start;
+/* glow effect on ground after hover - showing after hover because opacity is 1*/
+.neon-button:hover::before,
+.neon-button:focus::before {
+    opacity: 1;
 }
 
-/* container div styling */
-.container {
-    scroll-snap-type: y proximity;
-    overflow-y: scroll;
-    height: 100vh;
+/* glow effect on button after hover - showing after hover because opacity is 1*/
+.neon-button:hover::after,
+.neon-button:focus::after {
+    opacity: 1;
 }
 
